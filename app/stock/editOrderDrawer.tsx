@@ -30,7 +30,7 @@ const EditOrderDrawer = (props: any) => {
     });
   };
 
-  const handleRemoveRow = (INDEX: number, editObj) => {
+  const handleRemoveRow = (INDEX: number, editObj: any) => {
     if (editObj.item_id) {
       if (dataList.length < 2) {
         toast.error("Perform Overall Delete");
@@ -45,7 +45,7 @@ const EditOrderDrawer = (props: any) => {
     }
   };
 
-  const handleRemove = (INDEX, editOBJ) => {
+  const handleRemove = (INDEX: number, editOBJ) => {
     setLoader(true);
     const URL = `api/orders/delete_order_by_order_id?_id=${editOBJ._id}`;
     Axios.post(URL).then((res) => {
