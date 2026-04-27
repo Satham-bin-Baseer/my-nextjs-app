@@ -45,7 +45,7 @@ const EditOrderDrawer = (props: any) => {
     }
   };
 
-  const handleRemove = (INDEX: number, editOBJ) => {
+  const handleRemove = (INDEX: number, editOBJ: any) => {
     setLoader(true);
     const URL = `api/orders/delete_order_by_order_id?_id=${editOBJ._id}`;
     Axios.post(URL).then((res) => {
