@@ -57,7 +57,7 @@ const AddOrderDrawer = (props: any) => {
   // console.log(props.ud.emp_id);
 
   const saveOrders = () => {
-    const payload = {};
+    const payload: Record<string, any> = {};
     payload["data"] = orders.filter(({ item_id }) => Boolean(item_id));
     payload["pharmacy_id"] = props.ud.pharmacy_id;
     payload["pharmacy_code"] = props.ud.pharmacy_code;
