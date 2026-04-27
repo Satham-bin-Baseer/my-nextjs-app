@@ -3,10 +3,10 @@ import { ColumnType } from "antd/es/table";
 import moment from "moment";
 import qs from "qs";
 
-export const getQueryParam = (OBJ: any) => {
-  return qs.stringify(OBJ, {
+export const getQueryParam = (obj: Record<string, any>): string => {
+  return qs.stringify(obj, {
     skipNulls: true,
-    filter: (_key, value) => (value == "" ? undefined : value),
+    filter: (_key: any, value: any) => (value === "" ? undefined : value),
   });
 };
 
