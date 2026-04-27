@@ -1,12 +1,12 @@
 "use client";
 
-import type { PermissionIF, userJWT } from "../utilities";
-import React, { useState, ReactNode, useEffect } from "react";
+import type { ChildrenReactNode, PermissionIF, userJWT } from "../utilities";
+import React, { useState, useEffect } from "react";
 import { Axios } from "../utilities/axiosConfig";
 import { AppContext } from "./AppContext";
 import { jwtDecode } from "jwt-decode";
 
-const AppContextProvider = ({ children }: { children: ReactNode }) => {
+const AppContextProvider = (props: ChildrenReactNode) => {
   const [isLogged, setIsLogged] = useState(false);
   const [isAuthReady, setIsAuthReady] = useState(false);
   const [modPermissions, setModPermissions] = useState<PermissionIF[]>([]);
@@ -66,7 +66,7 @@ const AppContextProvider = ({ children }: { children: ReactNode }) => {
         setIsAuthReady,
       }}
     >
-      {children}
+      {props.children}
     </AppContext.Provider>
   );
 };

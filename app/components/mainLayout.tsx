@@ -2,11 +2,12 @@
 
 import Sidebar from "./sidebar";
 import Header from "./header";
-import { useContext, ReactNode } from "react";
+import { useContext } from "react";
 import LoginPage from "./loginPage";
 import { AppContext } from "../context/AppContext";
+import { ChildrenReactNode } from "../utilities";
 
-const MainLayout = ({ children }: { children: ReactNode }) => {
+const MainLayout = (props: ChildrenReactNode) => {
   const context = useContext(AppContext);
 
   if (!context?.isAuthReady) {
@@ -46,7 +47,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
         }}
       >
         <Header />
-        {children}
+        {props.children}
       </main>
     </>
   );

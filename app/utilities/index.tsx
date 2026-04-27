@@ -1,3 +1,4 @@
+import React from "react";
 import { Form, Input, Col } from "antd";
 import { ColumnType } from "antd/es/table";
 import moment from "moment";
@@ -141,3 +142,7 @@ export const InputElement = (
     </Col>
   );
 };
+
+export interface ChildrenReactNode {
+  children: React.ReactNode;
+}
