@@ -7,7 +7,19 @@ import { CheckOutlined } from "@ant-design/icons";
 import toast from "react-hot-toast";
 import { Axios } from "../utilities/axiosConfig";
 
-const UserPermissions = (props: any) => {
+interface DataType {
+  _id: number;
+  menuname_key: string;
+  status: number;
+}
+
+interface UerPermissionsMenuProps {
+  menuKeys: DataType[];
+  role_id: number;
+  closeDrawer: () => void;
+}
+
+const UserPermissions = (props: UerPermissionsMenuProps) => {
   const [loader, setLoader] = useState(false);
   const [actions, setActions] = useState([1, 2, 3, 4, 5]);
   const [permissions, setPermissions] = useState<PermissionIF[]>([]);
