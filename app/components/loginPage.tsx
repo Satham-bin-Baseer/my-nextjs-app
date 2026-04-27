@@ -34,7 +34,7 @@ export default function LoginPage() {
     });
   };
 
-  const verifyResponse = async (cre) => {
+  const verifyResponse = async (cre: any) => {
     try {
       const URL = `/api/auth/google-login`;
       const { access_token } = cre;
