@@ -13,7 +13,7 @@ interface OrderInterface {
   quantity: number;
 }
 
-const AddOrderDrawer = (props) => {
+const AddOrderDrawer = (props: any) => {
   const [loader, setLoader] = useState(false);
   const [rows, setRows] = useState(1);
   const [orders, setOrders] = useState<OrderInterface[]>([]);

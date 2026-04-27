@@ -7,7 +7,7 @@ import { CheckOutlined } from "@ant-design/icons";
 import toast from "react-hot-toast";
 import { Axios } from "../utilities/axiosConfig";
 
-const UserPermissions = (props) => {
+const UserPermissions = (props: any) => {
   const [loader, setLoader] = useState(false);
   const [actions, setActions] = useState([1, 2, 3, 4, 5]);
   const [permissions, setPermissions] = useState<PermissionIF[]>([]);

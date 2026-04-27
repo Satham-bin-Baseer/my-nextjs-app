@@ -8,7 +8,7 @@ import { jwtDecode } from "jwt-decode";
 import { StockReqItem, userJWT } from "../utilities";
 import { Axios } from "../utilities/axiosConfig";
 
-const EditOrderDrawer = (props) => {
+const EditOrderDrawer = (props: any) => {
   const [loader, setLoader] = useState(false);
   const [rows, setRows] = useState(1);
   const [dataList, setDataList] = useState<StockReqItem[]>([]);

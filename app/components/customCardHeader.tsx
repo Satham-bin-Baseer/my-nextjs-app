@@ -2,7 +2,14 @@ import CardFixedTop from "./cardFixedTop";
 import ReturnChild from "./ReturnChild";
 import { PlusOutlined, ReloadOutlined } from "@ant-design/icons";
 
-export const CustomCardHeader = (props) => {
+interface CardHeaderProps {
+  title: string;
+  menu_key: number;
+  onClickNew: () => void;
+  onClickRefresh: () => void;
+}
+
+export const CustomCardHeader = (props: CardHeaderProps) => {
   return (
     <CardFixedTop title={props.title}>
       <ul>
