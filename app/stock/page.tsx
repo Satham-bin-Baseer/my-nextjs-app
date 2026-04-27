@@ -211,7 +211,6 @@ const StockRequest = () => {
       <CustomCardHeader
         title="Request Stock"
         menu_key={6}
-        action_id={2}
         onClickNew={() => setShowAddOrder(true)}
         onClickRefresh={() => {
           setPagination((item) => ({ ...item, total: 0 }));
@@ -324,7 +323,6 @@ const StockRequest = () => {
         bodyStyle={{ padding: 0 }}
       >
         <AddOrderDrawer
-          ud={ud}
           itemsList={itemsList}
           onSuccess={() => {
             setShowAddOrder(false);

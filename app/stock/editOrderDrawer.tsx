@@ -198,7 +198,7 @@ const EditOrderDrawer = (props: any) => {
                     showSearch={{ optionFilterProp: "label" }}
                     defaultValue={item.item_id}
                     onChange={(val) => handleRowChange("item_id", val, index)}
-                    options={props.itemsList.map((item) => ({
+                    options={props.itemsList.map((item: any) => ({
                       value: item._id,
                       label: `${item.item_name} (${item.item_type})`,
                     }))}

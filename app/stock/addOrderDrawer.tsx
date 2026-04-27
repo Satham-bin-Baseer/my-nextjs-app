@@ -4,8 +4,9 @@ import React, { useState, useEffect } from "react";
 import { PlusOutlined, DeleteOutlined, CheckOutlined } from "@ant-design/icons";
 import toast from "react-hot-toast";
 import { Button, Input, Select, Spin } from "antd";
-import { momentDate } from "../utilities";
+import { momentDate, userJWT } from "../utilities";
 import { Axios } from "../utilities/axiosConfig";
+import { jwtDecode } from "jwt-decode";
 
 interface OrderInterface {
   id: number;
@@ -17,6 +18,9 @@ const AddOrderDrawer = (props: any) => {
   const [loader, setLoader] = useState(false);
   const [rows, setRows] = useState(1);
   const [orders, setOrders] = useState<OrderInterface[]>([]);
+
+  const lc_user_token = localStorage.getItem("user_details");
+  let ud = jwtDecode<userJWT>(lc_user_token as string);
 
   const rowObj = (index: number): OrderInterface => {
     return { id: Date.now() + index, item_id: 0, quantity: 1 };
@@ -54,15 +58,15 @@ const AddOrderDrawer = (props: any) => {
     return res;
   };
 
-  // console.log(props.ud.emp_id);
+  // console.log(ud.emp_id);
 
   const saveOrders = () => {
     const payload: Record<string, any> = {};
     payload["data"] = orders.filter(({ item_id }) => Boolean(item_id));
-    payload["pharmacy_id"] = props.ud.pharmacy_id;
-    payload["pharmacy_code"] = props.ud.pharmacy_code;
+    payload["pharmacy_id"] = ud.pharmacy_id;
+    payload["pharmacy_code"] = ud.pharmacy_code;
     payload["ordered_date"] = momentDate(new Date(), "YYYY-MM-DD hh:mm A");
-    payload["emp_id"] = props.ud.emp_id;
+    payload["emp_id"] = ud._id;
 
     if (payload["data"].length < 1) {
       toast.error("Create order first");
@@ -154,7 +158,7 @@ const AddOrderDrawer = (props: any) => {
                     className="w100"
                     showSearch={{ optionFilterProp: "label" }}
                     onChange={(val) => handleRowChange("item_id", val, index)}
-                    options={props.itemsList.map((item) => ({
+                    options={props.itemsList.map((item: any) => ({
                       value: item._id,
                       label: `${item.item_name} (${item.item_type})`,
                     }))}
