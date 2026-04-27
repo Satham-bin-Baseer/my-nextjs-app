@@ -4,8 +4,7 @@ import React, { useState, useEffect } from "react";
 import { PlusOutlined, DeleteOutlined, CheckOutlined } from "@ant-design/icons";
 import toast from "react-hot-toast";
 import { Button, Input, Modal, Select, Spin } from "antd";
-import { jwtDecode } from "jwt-decode";
-import { StockReqItem, userJWT } from "../utilities";
+import { StockReqItem } from "../utilities";
 import { Axios } from "../utilities/axiosConfig";
 
 const EditOrderDrawer = (props: any) => {

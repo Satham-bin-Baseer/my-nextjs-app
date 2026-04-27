@@ -29,7 +29,7 @@ const AppContextProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [user]);
 
-  const getPermissions = (USER: any) => {
+  const getPermissions = (USER: userJWT) => {
     const URL = `api/auth/list_user_permissions?role_id=${USER.emp_role}`;
     Axios.post(URL).then((res) => {
       if (res["data"].status == "1") {
@@ -38,7 +38,7 @@ const AppContextProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
-  const login = (USER: any) => {
+  const login = (USER: string) => {
     localStorage.setItem("user_details", USER);
     Axios.defaults.headers.common["Api-Token"] = USER;
     let jwtDecodedUser = jwtDecode<userJWT>(USER);
@@ -63,7 +63,7 @@ const AppContextProvider = ({ children }: { children: ReactNode }) => {
         modPermissions,
         login,
         logout,
-        setIsAuthReady
+        setIsAuthReady,
       }}
     >
       {children}

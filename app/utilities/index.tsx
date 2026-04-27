@@ -6,7 +6,7 @@ import qs from "qs";
 export const getQueryParam = (obj: Record<string, any>): string => {
   return qs.stringify(obj, {
     skipNulls: true,
-    filter: (_key: any, value: any) => (value === "" ? undefined : value),
+    filter: (_key: string, value: any) => (value === "" ? undefined : value),
   });
 };
 
@@ -25,7 +25,7 @@ export const momentDate = (
   return "";
 };
 
-export const generateSerialNumber = (pagination): ColumnType<any> => {
+export const generateSerialNumber = (pagination: any): ColumnType<any> => {
   return {
     title: "S.No",
     width: 10,
@@ -35,7 +35,11 @@ export const generateSerialNumber = (pagination): ColumnType<any> => {
   };
 };
 
-export const genColLeft = (title, dataIndex, width = 10): ColumnType<any> => {
+export const genColLeft = (
+  title: string,
+  dataIndex: string,
+  width: number = 10,
+): ColumnType<any> => {
   return {
     title,
     dataIndex,
@@ -43,7 +47,11 @@ export const genColLeft = (title, dataIndex, width = 10): ColumnType<any> => {
   };
 };
 
-export const genColCenter = (title, dataIndex, width = 10): ColumnType<any> => {
+export const genColCenter = (
+  title: string,
+  dataIndex: string,
+  width: number = 10,
+): ColumnType<any> => {
   return {
     title,
     dataIndex,
